@@ -6,11 +6,21 @@
     <form (ngSubmit)="agregarTarea()">
       <div>
         <label for="titulo">Titulo</label>
-        <input id="titulo" [(ngModel)]="nuevaTarea.titulo" name="titulo" required />
+        <input
+          id="titulo"
+          [(ngModel)]="nuevaTarea.titulo"
+          name="titulo"
+          required
+        />
       </div>
       <div>
         <label for="tiempo">Tiempo (minutos)</label>
-        <input id="tiempo" [(ngModel)]="nuevaTarea.minutos" name="tiempo" required />
+        <input
+          id="tiempo"
+          [(ngModel)]="nuevaTarea.minutos"
+          name="tiempo"
+          required
+        />
       </div>
       <button type="submit">Agregar tarea</button>
     </form>
@@ -21,23 +31,23 @@
         <tr>
           <th (click)="ordenarTareas('titulo')">
             <span *ngIf="sortBy === 'titulo'">
-              {{ ascending ? '▲' : '▼' }}
+              {{ ascending ? "▲" : "▼" }}
             </span>
             Titulo
           </th>
           <th (click)="ordenarTareas('minutos')">
             <span *ngIf="sortBy === 'minutos'">
-              {{ ascending ? '▲' : '▼' }}
+              {{ ascending ? "▲" : "▼" }}
             </span>
             Tiempo (minutos)
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tarea of tareas; let i = index">
+        <tr *ngFor="let tarea of tareas; let i = index" [ngStyle]="{'background-color': destacarTarea(tarea) ? 'lightblue' : 'transparent'}">
           <td>{{ tarea.titulo }}</td>
           <td>{{ tarea.minutos }}</td>
-          <td><input type="checkbox" [(ngModel)]="tarea.seleccionado"></td>
+          <td><input type="checkbox" [(ngModel)]="tarea.seleccionado" /></td>
         </tr>
       </tbody>
     </table>
@@ -45,6 +55,11 @@
     <!-- Botón para eliminar tareas seleccionadas -->
     <form (ngSubmit)="eliminarTarea()">
       <button type="submit">Eliminar tarea</button>
+    </form>
+
+    <!--Botón para destacar tareas seleccioandas-->
+    <form (ngSubmit)="destacarTareas()">
+      <button type="submit">Destacar tarea</button>
     </form>
   </ol>
 </div>

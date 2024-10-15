@@ -65,4 +65,22 @@ export class AppComponent {
     });
 
   }
+
+  //metodo para destacar una tarea
+  destacarTareas() {
+    this.tareas.forEach(tarea => {
+      if (tarea.seleccionado) {
+        tarea.destacado = true;
+      }
+    });
+  }
+
+  destacarTarea(tarea: any): boolean {
+    return tarea.destacado;
+  }
+
+  //metodo para ordenar aleatoreamente
+  aleatorio() {
+    this.tareas = this.tareas.sort(() => Math.random() - 0.5);
+  }
 }
