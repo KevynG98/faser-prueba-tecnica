@@ -37,8 +37,10 @@ export class AppComponent {
   }
 
   //metodo para manejar elementos seleccionados
-  procesarElementosSeleccionados() {
+  eliminarTarea() {
     const seleccionados = this.tareas.filter(elemento => elemento.seleccionado);
-    //hacer algo aqui despues
+    seleccionados.forEach(elemento => {
+      this.tareas.splice(this.tareas.indexOf(elemento), 1);
+    });
   }
 }
