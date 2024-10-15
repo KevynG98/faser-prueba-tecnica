@@ -43,4 +43,26 @@ export class AppComponent {
       this.tareas.splice(this.tareas.indexOf(elemento), 1);
     });
   }
+
+  //metodo para ordenar
+  sortBy: string = '';
+  ascending: boolean = true;
+  ordenarTareas(campo: string): void {
+    if (this.sortBy === campo) {
+      this.ascending = !this.ascending;
+    } else {
+      this.sortBy = campo;
+      this.ascending = true;
+    }
+    this.tareas = this.tareas.sort((a, b) => {
+      if (a[campo] > b[campo]) {
+        return this.ascending ? 1 : -1;
+      }
+      if (a[campo] < b[campo]) {
+        return this.ascending ? -1 : 1;
+      }
+      return 0;
+    });
+
+  }
 }

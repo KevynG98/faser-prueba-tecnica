@@ -19,8 +19,18 @@
     <table border="1">
       <thead>
         <tr>
-          <th>Titulo</th>
-          <th>Tiempo (minutos)</th>
+          <th (click)="ordenarTareas('titulo')">
+            <span *ngIf="sortBy === 'titulo'">
+              {{ ascending ? '▲' : '▼' }}
+            </span>
+            Titulo
+          </th>
+          <th (click)="ordenarTareas('minutos')">
+            <span *ngIf="sortBy === 'minutos'">
+              {{ ascending ? '▲' : '▼' }}
+            </span>
+            Tiempo (minutos)
+          </th>
         </tr>
       </thead>
       <tbody>
