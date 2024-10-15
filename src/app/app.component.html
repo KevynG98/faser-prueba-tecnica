@@ -1,8 +1,21 @@
 <div class="container">
-	<h1>Prueba técnica - Estudio Faser</h1>
-	<h2>Listado de tareas</h2>
-	<ol>
-		<!-- <li *ngFor="let tarea of tareas">{{tarea.titulo}} ({{tarea.minutos}} minutos)</li> -->
+  <h1>Prueba técnica - Estudio Faser</h1>
+  <h2>Listado de tareas</h2>
+  <ol>
+    <!-- Formulario para agregar tareas -->
+    <form (ngSubmit)="agregarTarea()">
+      <div>
+        <label for="titulo">Titulo</label>
+        <input id="titulo" [(ngModel)]="nuevaTarea.titulo" name="titulo" required />
+      </div>
+      <div>
+        <label for="tiempo">Tiempo (minutos)</label>
+        <input id="tiempo" [(ngModel)]="nuevaTarea.minutos" name="tiempo" required />
+      </div>
+      <button type="submit">Agregar tarea</button>
+    </form>
+
+    <!-- Tabla con las tareas -->
     <table border="1">
       <thead>
         <tr>
@@ -12,10 +25,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let tarea of tareas">
-          <td>{{tarea.titulo}}</td>
-          <td>{{tarea.minutos}}</td>
+          <td>{{ tarea.titulo }}</td>
+          <td>{{ tarea.minutos }}</td>
         </tr>
       </tbody>
     </table>
-	</ol>
+  </ol>
 </div>
